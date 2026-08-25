@@ -17,3 +17,8 @@ output "web_security_group_id" {
   description = "Security group ID for the web servers"
   value       = module.security.web_security_group_id
 }
+
+output "load_balancer_dns_name" {
+  description = "DNS name of the application load balancer"
+  value       = module.load_balancer.load_balancer_dns_name
+}
