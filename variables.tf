@@ -45,3 +45,17 @@ variable "max_size" {
   type        = number
   default     = 3
 }
+variable "availability_zones" {
+  description = "Availability zones for the web tier"
+  type        = list(string)
+
+  default = [
+    "ap-southeast-2a",
+    "ap-southeast-2b"
+  ]
+
+  validation {
+    condition     = length(var.availability_zones) >= 2
+    error_message = "At least two availability zones are required."
+  }
+}
