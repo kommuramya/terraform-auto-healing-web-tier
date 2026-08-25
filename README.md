@@ -4,24 +4,47 @@ Terraform implementation of a highly available and self-healing web tier on AWS.
 
 ## 1. Objective
 
-The objective of this assessment is to provision an auto-healing web tier that can tolerate the loss of any single VM without application downtime.
+The objective of this assessment is to build an auto-healing web tier that can tolerate the loss of any single VM without application downtime.
 
 The solution uses:
 
-- AWS Application Load Balancer
-- AWS Auto Scaling Group
+- AWS Application Load Balancer (ALB)
+- AWS Auto Scaling Group (ASG)
 - Two EC2 instances across two Availability Zones
 - NGINX web server
-- ALB health checks
-- Auto Scaling health checks
+- ALB target group health checks
+- ELB health checks integrated with the Auto Scaling Group
 - Terraform Infrastructure as Code
 - Modular Terraform configuration
 
-The infrastructure is designed to maintain a minimum of two healthy web instances at all times.
+The web tier maintains a minimum and desired capacity of two instances.
 
 ---
 
-## 2. Architecture
+## 2. Why AWS?
+
+AWS was selected because it provides native services that directly support the assessment requirements, including:
+
+- Application Load Balancer for traffic distribution and health checks
+- Auto Scaling Group for automatic instance replacement
+- EC2 for the web tier
+- Availability Zones for high availability
+- User Data for automated instance bootstrapping
+
+This allows the solution to provide self-healing behaviour using managed AWS capabilities while keeping the Terraform implementation straightforward.
+
+---
+
+## 3. Architecture
+
+The architecture consists of an internet-facing Application Load Balancer distributing traffic across two NGINX web servers deployed across separate Availability Zones.
+
+The editable draw.io architecture diagram is available here:
+
+- `architecture-diagram.drawio`
+- `architecture-diagram.png`
+
+### High-level flow
 
 ```text
                          Internet
