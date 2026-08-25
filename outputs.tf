@@ -22,3 +22,8 @@ output "load_balancer_dns_name" {
   description = "DNS name of the application load balancer"
   value       = module.load_balancer.load_balancer_dns_name
 }
+
+output "autoscaling_group_name" {
+  description = "Name of the web Auto Scaling Group"
+  value       = module.web_tier.autoscaling_group_name
+}
