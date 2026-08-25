@@ -1,50 +1,27 @@
 variable "aws_region" {
-  description = "AWS region"
+  description = "AWS region for the deployment"
   type        = string
   default     = "ap-southeast-2"
 }
 
 variable "project_name" {
-  description = "Project name"
+  description = "Project name used for resource naming"
   type        = string
   default     = "auto-healing-web"
 }
 
 variable "environment" {
-  description = "Environment name"
+  description = "Deployment environment"
   type        = string
-  default     = "assessment"
+  default     = "dev"
 }
 
 variable "vpc_cidr" {
-  description = "VPC CIDR block"
+  description = "CIDR block for the VPC"
   type        = string
   default     = "10.0.0.0/16"
 }
 
-variable "instance_type" {
-  description = "EC2 instance type"
-  type        = string
-  default     = "t3.micro"
-}
-
-variable "desired_capacity" {
-  description = "Desired number of web instances"
-  type        = number
-  default     = 2
-}
-
-variable "min_size" {
-  description = "Minimum number of web instances"
-  type        = number
-  default     = 2
-}
-
-variable "max_size" {
-  description = "Maximum number of web instances"
-  type        = number
-  default     = 3
-}
 variable "availability_zones" {
   description = "Availability zones for the web tier"
   type        = list(string)
