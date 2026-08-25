@@ -7,3 +7,13 @@ output "subnet_ids" {
   description = "IDs of the public subnets"
   value       = module.network.subnet_ids
 }
+
+output "alb_security_group_id" {
+  description = "Security group ID for the application load balancer"
+  value       = module.security.alb_security_group_id
+}
+
+output "web_security_group_id" {
+  description = "Security group ID for the web servers"
+  value       = module.security.web_security_group_id
+}
